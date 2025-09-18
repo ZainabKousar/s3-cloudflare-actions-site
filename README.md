@@ -69,16 +69,15 @@ Configured `.github/workflows/deploy.yml` to:
 
 ## 📷 Sample Screenshots
 
-![Screenshot 1](images/Screenshot 1.png)  
-![Screenshot 2](images/Screenshot 2.png)  
-![Screenshot 3](images/Screenshot 3.png)  
-![Screenshot 4](images/Screenshot 4.png)  
-![Screenshot 5](images/Screenshot 5.png)  
-![Screenshot 6](images/Screenshot 6.png)  
-![Screenshot 7](images/Screenshot 7.png)  
+![Screenshot 1](images/Screenshot1.png)  
+![Screenshot 2](images/Screenshot2.png)  
+![Screenshot 3](images/Screenshot3.png)  
+![Screenshot 4](images/Screenshot4.png)  
+![Screenshot 5](images/Screenshot5.png)  
+![Screenshot 6](images/Screenshot6.png)  
+![Screenshot 7](images/Screenshot7.png)  
 
 ---
 
 ## 📖 Conclusion
 This project delivers a scalable, secure, and cost-efficient static hosting solution using **AWS S3 + Cloudflare + GitHub Actions**. It removes manual deployment steps, provides instant global updates, and ensures performance optimization with CDN caching and HTTPS encryption.
-
