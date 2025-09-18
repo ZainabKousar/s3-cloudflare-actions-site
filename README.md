@@ -1,5 +1,7 @@
-🚀 Scalable Static Website with S3, Cloudflare & GitHub Actions
-📌 Project Overview
+## 🚀 Scalable Static Website with S3, Cloudflare & GitHub Actions
+
+
+## 📌 Project Overview
 
 This project demonstrates a fully automated workflow for hosting and deploying a static website. It integrates:
 
@@ -11,7 +13,7 @@ GitHub Actions → CI/CD pipeline for automatic deployments
 
 Every time code is pushed to GitHub, the website is updated on S3, and Cloudflare cache is purged, ensuring real-time global updates.
 
-🛠️ Tools & Technologies
+## 🛠️ Tools & Technologies
 
 AWS S3 (Free Tier): Website hosting
 
@@ -23,7 +25,7 @@ HTML & CSS: Static web content
 
 Bash & AWS CLI: S3 policies and configuration
 
-🔑 Implementation Steps
+## 🔑 Implementation Steps
 1. Repository Setup
 
 Initialized a GitHub repository with index.html and style.css.
@@ -84,7 +86,7 @@ GitHub Actions deployed updates to S3.
 
 Site refreshed instantly at https://zainaluxe.shop.
 
-✅ Deliverables
+## ✅ Deliverables
 
 Live website hosted via Cloudflare CDN with HTTPS.
 
@@ -92,10 +94,10 @@ Automated CI/CD deployment pipeline using GitHub Actions.
 
 Optimized performance with global caching and compression.
 
-📷 Sample Screenshots
+## 📷 Sample Screenshots
 
 (Add screenshots here: S3 hosting, bucket policy, Cloudflare DNS/SSL settings, GitHub Actions run, live site with HTTPS)
 
-📖 Conclusion
+## 📖 Conclusion
 
 This project delivers a scalable, secure, and cost-efficient static hosting solution using AWS S3 + Cloudflare + GitHub Actions. It removes manual deployment steps, provides instant global updates, and ensures performance optimization with CDN caching and HTTPS encryption.
