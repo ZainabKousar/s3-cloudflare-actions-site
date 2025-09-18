@@ -3,37 +3,352 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ZainaLuxe Abaya website</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Zainaluxe | Luxury Abayas & Modest Fashion</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #fff;
+      color: #222;
+      text-align: center;
+    }
+
+    /* 🔽 Banner Slideshow */
+    #banner {
+      position: relative;
+      width: 100%;
+      max-height: 600px;
+      overflow: hidden;
+    }
+    #banner img {
+      width: 100%;
+      height: auto;
+      display: none;
+      object-fit: cover;
+    }
+    #banner img.active {
+      display: block;
+      animation: fade 1s;
+    }
+    @keyframes fade {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    /* Animations for heading and tagline */
+    header h1 {
+      margin-top: 15px;
+      font-size: 2.5rem;
+      color: black;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeSlideDown 1s ease-out forwards;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 1.2s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Shop Now button with animation */
+    button {
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeInScale 1s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    button:hover { background: #333; }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Product Grid */
+    .products {
+      display: none;
+      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .products.show {
+      display: grid;
+      opacity: 1;
+    }
+    .product {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+    .products.show .product {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      transition: transform 0.3s;
+    }
+    .product img:hover { transform: scale(1.05); }
+    .price {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Slideshow Section */
+    #slideshow {
+      position: relative;
+      max-width: 900px;
+      margin: 30px auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    #slideshow img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+    #slideshow img.active {
+      display: block;
+      animation: fade 1s;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Contact Section */
+    .contact {
+      margin-top: 40px;
+      padding: 30px;
+      background: #f3f3f3;
+      border-radius: 12px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .whatsapp {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .whatsapp:hover { background: #1ebe5b; }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #222;
+      color: #fff;
+    }
+
+    /* Responsive text */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      .tagline { font-size: 1rem; }
+    }
+    @media (min-width: 1200px) {
+      header h1 { font-size: 3rem; }
+      .tagline { font-size: 1.4rem; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- 🔽 Top Banner Slideshow -->
+  <div id="banner">
+    <img src="https://safa.store/cdn/shop/files/safa-creatives2.jpg?v=1723533472&width=2000" alt="Abaya image">
+    <img src="photos/image 24.jpg" alt="Banner 1" class="active">
+    <img src="photos/image 28.jpg" alt="Banner 2">
+
+  </div>
+
   <header>
-          <img src= "https://safa.store/cdn/shop/files/safa-creatives2.jpg?v=1723533472&width=2000"alt = "Abaya image" height="600">
     <h1>ZAINALUXE</h1>
-    <p class="tagline">MODESTY REDEFINED WITH STYLE</p>
+    <p class="tagline">WHERE ELEGANCE MEETS MODESTY</p>
   </header>
 
   <main>
     <section class="card">
       <h2>About Us</h2>
-      <p>At ZAINALUXE, we believe that modesty and elegance go hand in hand. Our collection of abayas is thoughtfully designed to blend timeless tradition with modern sophistication, offering styles that suit every occasion — from everyday wear to special events.
-
-Each piece is crafted with care, using high-quality fabrics, meticulous tailoring, and attention to detail to ensure comfort, durability, and beauty in every stitch. We take pride in celebrating cultural heritage while embracing contemporary fashion trends, so you can express your individuality with confidence and grace.
-
-Whether you prefer classic silhouettes or contemporary cuts, our mission is to provide abayas that empower women to feel elegant, modest, and effortlessly stylish.</p>
-      <button id="Shop now">Shop now</button>
+      <p>
+        At ZAINALUXE, we believe that modesty and elegance go hand in hand. Our collection of abayas is thoughtfully designed to blend timeless tradition with modern sophistication.
+      </p>
+      <button id="shopNow">Shop now</button>
       <p id="msg"></p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-4snINaFDHsitD6bwpfN4dMDvEDlQhWVvBw&s"alt ="abayas" height="200">
+
+      <!-- 🔽 Products Section -->
+      <div class="products" id="products">
+        <div class="product">
+          <img src="photos/image1.jpg" alt="Abaya 1">
+          <p class="price">₹ 5,000</p>
+        </div>
+        <div class="product">
+          <img src="photos/image10.jpg" alt="Abaya 2">
+          <p class="price">₹ 6,000</p>
+        </div>
+        <div class="product">
+          <img src="photos/image11.jpg" alt="Abaya 3">
+          <p class="price">₹ 7,000</p>
+        </div>
+        <div class="product">
+          <img src="photos/image14.jpg" alt="Abaya 4">
+          <p class="price">₹ 8,000</p>
+        </div>
+        <div class="product">
+          <img src="photos/image9.jpg" alt="Abaya 5">
+          <p class="price">₹ 10,000</p>
+        </div>
+      </div>
     </section>
-  
+
+    <!-- 🔽 Slideshow Section -->
+    <section class="card">
+      <h2>Our Collection</h2>
+      <div id="slideshow">
+        <img src="photos/image12.jpg" alt="Slide 1" class="active">
+        <img src="photos/image13.jpg" alt="Slide 2">
+        <img src="photos/image15.jpg" alt="Slide 3">
+        <img src="photos/image2.jpg" alt="Slide 4">
+        <img src="photos/image4.jpg" alt="Slide 5">
+        <img src="photos/new.jpg" alt="Slide 6">
+        <img src="photos/image6.jpg" alt="Slide 7">
+        <img src="photos/image8.jpg" alt="Slide 8">
+      </div>
+    </section>
+
+    <!-- 🔽 Contact Section -->
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <p>We’d love to help you find your perfect abaya. For orders, customization, or any questions, feel free to reach us anytime.</p>
+      <a href="https://wa.me/918247305169" target="_blank" class="whatsapp">💬 Chat on WhatsApp</a>
+    </section>
+  </main>
+
   <footer>
     <small>© Moin Mohammed</small>
   </footer>
 
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span id="closeBtn">&times;</span>
+    <img id="lightboxImg" src="">
+  </div>
+
   <script>
-    document.getElementById('Shop now').addEventListener('click', () => {
-      document.getElementById('msg').textContent = 'Shop stylish and elegant Abayas, Hijabs, and Khimar designs collection at ZainaLuxe. Browse through our collection of premium abayas.';
+    // 🔽 Top Banner Slideshow
+    const bannerSlides = document.querySelectorAll('#banner img');
+    let bannerIndex = 0;
+    setInterval(() => {
+      bannerSlides[bannerIndex].classList.remove('active');
+      bannerIndex = (bannerIndex + 1) % bannerSlides.length;
+      bannerSlides[bannerIndex].classList.add('active');
+    }, 3000);
+
+    // Shop button
+    document.getElementById('shopNow').addEventListener('click', () => {
+      document.getElementById('msg').textContent =
+        'Explore our premium Abayas collection below:';
+      document.getElementById('products').classList.add('show');
     });
+
+    // Lightbox for product images
+    const productsImgs = document.querySelectorAll('.product img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+
+    productsImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    // Slideshow Section
+    const slides = document.querySelectorAll('#slideshow img');
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 3000);
   </script>
 </body>
 </html>
